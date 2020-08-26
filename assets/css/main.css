@@ -4,5 +4,6 @@
 }
 #jsoneditor {
     width: 100%;
+    height: calc(100vh - 75px);
     margin: 5px 0 5px 0;
 }

@@ -27,14 +27,25 @@
     <script>
         // create the editor
         const container = document.getElementById("jsoneditor")
-        const options = {}
+        const options = {
+            mode: 'tree',
+            modes: ['code', 'form', 'text', 'tree', 'view', 'preview'], // allowed modes
+            onError: function (err) {
+                alert(err.toString())
+            }
+        }
+
         const editor = new JSONEditor(container, options)
+        editor.expandAll();
 
         // set json
         const initialJSON = "assets/js/em_metadata.json";
         fetch(initialJSON)
             .then(response => response.json())
-            .then(data => editor.set(data));
+            .then(data => {
+                editor.set(data);
+                editor.expandAll();
+            });
 
 
         // Load a JSON document
