@@ -1,0 +1,14 @@
+{
+  "name": "datacatalog_editor",
+  "version": "0.1.0",
+  "description": "Editor for Data Catalog JSON metadata files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Spencer Bliven <spencer.bliven@psi.ch>",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "jsoneditor": "^9.0.4"
+  }
+}

@@ -1,0 +1,36 @@
+{
+    "principalInvestigator": "albrecht.gessler@psi.ch",
+    "creationLocation": "/PSI/EMF/JEOL2200FS",
+    "dataFormat": "TIFF+LZW Image Stack",
+    "sourceFolder": "/data/project/bio/gessler/myimages",
+    "datasetName": "myimages",
+    "owner": "Wilhelm Tell",
+    "ownerEmail": "wilhelm.tell@psi.ch",
+    "type": "raw",
+    "description": "EM micrographs of amygdalin",
+    "ownerGroup": "a-12345",
+    "scientificMetadata": {
+        "sample": {
+            "name": "Amygdalin beta-glucosidase 1",
+            "uniprot": "P29259",
+            "species": "Apple"
+        },
+        "dataCollection": {
+            "date": "2018-08-01"
+        },
+        "microscopeParameters": {
+            "pixel size": {
+                "v": 0.885,
+                "u": "A"
+            },
+            "voltage": {
+                "v": 200,
+                "u": "kV"
+            },
+            "dosePerFrame": {
+                "v": 1.277,
+                "u": "e/A2"
+            }
+        }
+    }
+}
