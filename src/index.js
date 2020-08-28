@@ -17,7 +17,19 @@ function main() {
         modes: ['code', 'form', 'text', 'tree', 'view', 'preview'], // allowed modes
         onError: function (err) {
             alert(err.toString())
-        }
+        },
+        templates: [
+            {
+              text: 'Unit',
+              title: 'value/unit measurement',
+              className: 'jsoneditor-type-object',
+            //   field: '',
+              value: {
+                'v': 0,
+                'u': 'unit',
+              },
+            },
+        ],
     }
 
     const editor = new JSONEditor(container, options)
