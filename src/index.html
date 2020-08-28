@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <!-- when using the mode "code", it's important to specify charset utf-8 -->
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+    <script src="https://bgrins.github.io/filereader.js/filereader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js"></script>
+
+    <link href="/css/main.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="/node_modules/jsoneditor/dist/jsoneditor.min.css" rel="stylesheet" type="text/css" /> -->
+
+</head>
+<body>
+    <div id="contentpane">
+        <h1>Data Catalog Metadata Editor</h1>
+
+        <p>This is an editor for metadata files for the
+        <a href="https://discovery.psi.ch">PSI Data Catalog</a>.
+        </p>
+        <div>
+            Upload template: <input type="file" id="loadDocument" value="Load"/>
+        </div>
+        <div id="jsoneditor"></div>
+        <div>
+            <input type="button" id="saveDocument" value="Download JSON" />
+        </div>
+    </div>
+
+    <script src="/bundle.js"></script>
+</body>
+
+</html>
