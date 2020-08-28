@@ -4,6 +4,9 @@ import './css/main.css';
 import html from './index.html';
 //import '!style-loader!css-loader?modules!jsoneditor/dist/jsoneditor.min.css';
 import 'jsoneditor/dist/jsoneditor.min.css';
+//import '!file-loader?name=[name].[ext]&outputPath=css/img!jsoneditor/dist/img/jsoneditor-icons.svg';
+import getSchema from'./schema.js';
+import * as schema from'./schema.js';
 
 function main() {
     console.log("Running main()");
@@ -26,6 +29,8 @@ function main() {
     const examples = [require("./examples/em_metadata.json")];
     editor.set(examples[0]);
     editor.expandAll();
+
+
 
     // Load a JSON document
     FileReaderJS.setupInput(document.getElementById('loadDocument'), {
@@ -56,7 +61,18 @@ function main() {
         saveAs(blob, fname)
     }
 
+    // Load schemas
+    getSchema()
+        .then(s => schema.fixSchema(s))
+        .then(s => editor.setSchema({
+            "$ref": "#/definitions/RawDataset",
+            definitions: s.definitions,
+        }));
+
     return editor
 }
 
 window.editor = main();
+window.schemaModule = schema;
+getSchema().then(s => window.schema = schema.fixSchema(s))
+//editor.setSchema({"$ref": "#/definitions/RawDataset", definitions: schema.definitions});
