@@ -14,6 +14,7 @@ module.exports = {
             // filename: "css/[name].css",
         }),
         new CleanWebpackPlugin(),
+
     ],
     module: {
         rules: [
@@ -23,6 +24,17 @@ module.exports = {
                     // 'style-loader',
                     MiniCssExtractPlugin.loader,
                     'css-loader',
+                    'postcss-loader',
+                ],
+            },
+            {
+                test: /\.scss$/i,
+                use: [
+                    // 'style-loader',
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader',
                 ],
             },
             {

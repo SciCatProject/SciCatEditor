@@ -3,6 +3,8 @@
 <head>
     <!-- when using the mode "code", it's important to specify charset utf-8 -->
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <script src="https://bgrins.github.io/filereader.js/filereader.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js"></script>
@@ -12,18 +14,22 @@
 
 </head>
 <body>
-    <div id="contentpane">
-        <h1>Data Catalog Metadata Editor</h1>
+    <div id="contentpane" class="container">
+        <h1 class="jumbotron">Data Catalog Metadata Editor</h1>
 
-        <p>This is an editor for metadata files for the
-        <a href="https://discovery.psi.ch">PSI Data Catalog</a>.
-        </p>
-        <div>
-            Upload template: <input type="file" id="loadDocument" value="Load"/>
-        </div>
-        <div id="jsoneditor"></div>
-        <div>
-            <input type="button" id="saveDocument" value="Download JSON" />
+        <div class="row">
+            <div class="col">
+                <p>This is an editor for metadata files for the
+                <a href="https://discovery.psi.ch">PSI Data Catalog</a>.
+                </p>
+                <div>
+                    Upload template: <input type="file" id="loadDocument" value="Load"/>
+                </div>
+                <div id="jsoneditor"></div>
+                <div>
+                    <input type="button" id="saveDocument" value="Download JSON" />
+                </div>
+            </div>
         </div>
     </div>
 

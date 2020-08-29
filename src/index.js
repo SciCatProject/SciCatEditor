@@ -1,5 +1,5 @@
 import JSONEditor from 'jsoneditor';
-import './css/main.css';
+import './scss/main.scss';
 //import psiLogo from './images/psilogo.png';
 import html from './index.html';
 //import '!style-loader!css-loader?modules!jsoneditor/dist/jsoneditor.min.css';
@@ -7,6 +7,9 @@ import 'jsoneditor/dist/jsoneditor.min.css';
 //import '!file-loader?name=[name].[ext]&outputPath=css/img!jsoneditor/dist/img/jsoneditor-icons.svg';
 import getSchema from'./schema.js';
 import * as schema from'./schema.js';
+import $ from 'jquery';
+import 'popper.js';
+import 'bootstrap';
 
 function main() {
     console.log("Running main()");
