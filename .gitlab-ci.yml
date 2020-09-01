@@ -1,0 +1,59 @@
+stages:
+  - build
+  - test
+  - deploy
+
+#image: alpine:latest
+#
+## variables:
+#
+#before_script:
+#  - apk list -I
+#  - >
+#    apk --no-cache add libatomic readline readline-dev libxml2 libxml2-dev
+#    ncurses-terminfo-base ncurses-terminfo
+#    libxslt libxslt-dev zlib-dev zlib
+#    ruby ruby-dev yaml yaml-dev
+#    libffi-dev build-base git nodejs
+#  - gem install bundler --no-document
+#  - pwd
+#  - ls -l
+#  - bundle install
+
+build:
+  stage: build
+  image: node:alpine
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - dist
+  tags:
+    - docker
+
+######################################################################
+# this defines the job (for gitlab-pages it has the special name "pages")
+pages:
+  stage: deploy
+  needs:
+    - build
+  script:
+    - pwd
+    - ls dist
+    - mv dist public
+
+# defines what is produced by the scripts (the "artifacts")
+  artifacts:
+    paths:
+      - public
+
+  # the tags define which runners (builders) will be selected. A
+  # suitable runner must have an identical tag
+  tags:
+    - shared
+    - gitlab-pages
+    - docker
+
+  # the "pages" job is only to be run for the master branch
+  only:
+    - master

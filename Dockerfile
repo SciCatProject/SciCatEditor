@@ -1,4 +1,4 @@
-FROM node:8.11-alpine
+FROM node:alpine
 LABEL maintainer="spencer.bliven@psi.ch"
 
 WORKDIR /app
