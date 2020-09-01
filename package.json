@@ -9,7 +9,7 @@
     "watch": "webpack --watch",
     "clean": "rm -rf dist/*",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docker-serve": "docker run --rm --name scicateditor -v $PWD/dist:/usr/share/nginx/html:ro  -p ${PORT:-8080}:80 -d nginx"
+    "serve": "webpack-dev-server"
   },
   "author": "Spencer Bliven <spencer.bliven@psi.ch>",
   "license": "GPL-3.0",
@@ -35,6 +35,7 @@
     "sass-loader": "^10.0.1",
     "style-loader": "^1.2.1",
     "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   }
 }

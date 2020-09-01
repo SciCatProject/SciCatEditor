@@ -3,7 +3,17 @@
 A web-based editor for metadata.json files for use with PSI's Data Catalog.
 
 
-## Installation
+## Docker Installation
+
+The easiest way to get up-and-running is with docker. The following command will
+build the editor and start an nginx server to serve the files:
+
+    docker-compose up -d
+
+Navigate your browser to http://127.0.0.1:8080.
+
+
+## Local Installation
 
 Requires npm for development.
 
@@ -16,15 +26,12 @@ This will generate all needed files in `dist/`.
 
 To update the build upon changes:
 
-    npm run build -- --watch
+    npm run watch
 
-## Web Server
+## Dev Server
 
-To serve files from a docker-based nginx webserver (requires docker):
+To serve files using webpack-dev-server:
 
-    npm run docker-serve
+    npm run serve
 
 This will make a local server available at http://127.0.0.1:8080/.
-Alternative ports can be specified via the `PORT` environmental variable.
-
-    PORT=9090 npm run docker-serve

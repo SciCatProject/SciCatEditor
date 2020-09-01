@@ -1,0 +1,31 @@
+version: '2'
+services:
+  builder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    entrypoint: ["npm", "run", "build"]
+    image: scicateditor:latest
+    volumes:
+      - "./src:/app/src:ro"
+      - "./dist:/app/dist:rw"
+
+  # For dev you probably want to install npm locally and run `npm run serve`
+  #devserver:
+  #  build:
+  #    context: .
+  #    dockerfile: Dockerfile
+  #  image: scicateditor/latest
+  #  ports:
+  #    - "8080:8080"
+  #  volumes:
+  #    - "./src:/app/src"
+
+  server:
+    image: nginx:latest
+    ports:
+        - "8080:80"
+    volumes:
+        - "./dist:/usr/share/nginx/html:ro"
+    depends_on:
+        - builder
