@@ -1,4 +1,4 @@
-# Data Catalog Editor
+# SciCat Editor
 
 A web-based editor for metadata.json files for use with PSI's Data Catalog.
 
