@@ -84,6 +84,11 @@ function main() {
             definitions: s.definitions,
         }));
 
+    // Open accordion folds from anchor links
+    $(document).ready(function () {
+        location.hash && $(location.hash + '.collapse').collapse('show');
+    });
+
     return editor
 }
 

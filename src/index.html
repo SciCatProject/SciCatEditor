@@ -28,75 +28,74 @@
         <div id="accordion" class="mt-2">
 
           <div class="card">
-            <div class="card-header" id="headingOne">
+            <div class="card-header" id="heading-about">
               <h5 class="mb-0">
-                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-                  aria-controls="collapseOne">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#about" aria-expanded="true"
+                  aria-controls="about">
                   About
                 </button>
               </h5>
             </div>
 
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div id="about" class="collapse show" aria-labelledby="heading-about" data-parent="#accordion">
               <div class="card-body">
 
                 <p>This is an editor for metadata files for the
                   <a href="https://discovery.psi.ch">PSI Data Catalog</a>.
                 </p>
+                <a role="button" class="btn btn-primary mx-auto" href="#load" data-toggle="collapse" data-target="#load">Get Started</a>
               </div>
             </div>
           </div>
 
           <div class="card">
-            <div class="card-header" id="headingTwo">
+            <div class="card-header" id="heading-load">
               <h5 class="mb-0">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
-                  aria-controls="collapseTwo">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#load" aria-expanded="false"
+                  aria-controls="load">
                   Load
                 </button>
               </h5>
             </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div id="load" class="collapse" aria-labelledby="heading-load" data-parent="#accordion">
               <div class="card-body">
                 <div>
                   Upload template: <input type="file" id="loadDocument" value="Load" />
                 </div>
+
+                <a role="button" class="btn btn-primary mx-auto" href="#options" data-toggle="collapse" data-target="#options">Next</a>
               </div>
             </div>
           </div>
 
           <div class="card">
-            <div class="card-header" id="headingThree">
+            <div class="card-header" id="heading-options">
               <h5 class="mb-0">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
-                  aria-controls="collapseThree">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#options" aria-expanded="false"
+                  aria-controls="options">
                   Options
                 </button>
               </h5>
             </div>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div id="options" class="collapse" aria-labelledby="heading-options" data-parent="#accordion">
               <div class="card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+
+                <a role="button" class="btn btn-primary mx-auto" href="#export" data-toggle="collapse" data-target="#export">Next</a>
               </div>
             </div>
           </div>
 
 
           <div class="card">
-            <div class="card-header" id="headingThree">
+            <div class="card-header" id="heading-export">
               <h5 class="mb-0">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
-                  aria-controls="collapseThree">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#export" aria-expanded="false"
+                  aria-controls="export">
                   Export
                 </button>
               </h5>
             </div>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div id="export" class="collapse" aria-labelledby="heading-export" data-parent="#accordion">
               <div class="card-body">
                 <div>
                   <input type="button" id="saveDocument" value="Download JSON" />
