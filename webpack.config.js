@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     entry: './src/index.js',
@@ -15,8 +16,12 @@ module.exports = {
         port: 8080,
     },
     plugins: [
+        new HtmlWebpackPlugin({
+            title: "SciCat Editor",
+            template: "!!html-loader!src/index.html"
+        }),
         new MiniCssExtractPlugin({
-            // filename: "css/[name].css",
+            filename: "[name].css",
         }),
         new CleanWebpackPlugin(),
 
@@ -39,7 +44,6 @@ module.exports = {
                     MiniCssExtractPlugin.loader,
                     'css-loader',
                     'postcss-loader',
-                    'resolve-url-loader',
                     'sass-loader',
                 ],
             },
