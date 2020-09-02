@@ -1,11 +1,11 @@
-// #contentpane {
-//     max-width: 600px;
-//     margin:auto;
-// }
 #jsoneditor {
     width: 100%;
     height: calc(100vh - 75px);
-    // margin: 5px 0 5px 0;
+}
+
+.navbar img {
+    height: 24px;
 }
 
 @import "custom_bootstrap";
+@import "custom_jsoneditor";

@@ -1,39 +1,123 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
-    <!-- when using the mode "code", it's important to specify charset utf-8 -->
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- when using the mode "code", it's important to specify charset utf-8 -->
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <script src="https://bgrins.github.io/filereader.js/filereader.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js"></script>
+  <title>SciCat Editor</title>
 
-    <link href="/main.css" rel="stylesheet" type="text/css" />
-    <!-- <link href="/node_modules/jsoneditor/dist/jsoneditor.min.css" rel="stylesheet" type="text/css" /> -->
+  <script src="https://bgrins.github.io/filereader.js/filereader.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js"></script>
+
+  <link href="/main.css" rel="stylesheet" type="text/css" />
+  <!-- <link href="/node_modules/jsoneditor/dist/jsoneditor.min.css" rel="stylesheet" type="text/css" /> -->
 
 </head>
+
 <body>
-    <div id="contentpane" class="container">
-        <h1 class="jumbotron">SciCat Metadata Editor</h1>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <img class="m-2" src="./images/scicat-logo-white.png" />
+    <img class="m-2" src="./images/psilogo.png" />
+    <a href="#" class="navbar-brand">SciCat Metadata Editor</a>
+  </nav>
 
-        <div class="row">
-            <div class="col">
-                <p>This is an editor for metadata files for the
-                <a href="https://discovery.psi.ch">PSI Data Catalog</a>.
-                </p>
-                <div>
-                    Upload template: <input type="file" id="loadDocument" value="Load"/>
-                </div>
-                <div id="jsoneditor"></div>
-                <div>
-                    <input type="button" id="saveDocument" value="Download JSON" />
-                </div>
+  <div id="contentpane" class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+
+        <div id="accordion" class="mt-2">
+
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                  aria-controls="collapseOne">
+                  About
+                </button>
+              </h5>
             </div>
-        </div>
-    </div>
 
-    <script src="/bundle.js"></script>
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="card-body">
+
+                <p>This is an editor for metadata files for the
+                  <a href="https://discovery.psi.ch">PSI Data Catalog</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                  aria-controls="collapseTwo">
+                  Load
+                </button>
+              </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="card-body">
+                <div>
+                  Upload template: <input type="file" id="loadDocument" value="Load" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="headingThree">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                  aria-controls="collapseThree">
+                  Options
+                </button>
+              </h5>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+              <div class="card-body">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+                proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+                aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+              </div>
+            </div>
+          </div>
+
+
+          <div class="card">
+            <div class="card-header" id="headingThree">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                  aria-controls="collapseThree">
+                  Export
+                </button>
+              </h5>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+              <div class="card-body">
+                <div>
+                  <input type="button" id="saveDocument" value="Download JSON" />
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-sm-12">
+        <div id="jsoneditor" class="mt-2 sticky-top"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/bundle.js"></script>
 </body>
 
 </html>
