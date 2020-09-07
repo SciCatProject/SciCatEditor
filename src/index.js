@@ -127,7 +127,7 @@ function setupSchemas(editor, schemas) {
     $list.change(function() {
         const $sel = $(this).find("option:selected");
         const val = $sel.val();
-        setSchema(editor, schemas, schemas[val]);
+        setSchema(editor, schemas, val);
     })
 }
 
