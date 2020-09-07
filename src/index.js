@@ -5,14 +5,14 @@ import html from './index.html';
 //import '!style-loader!css-loader?modules!jsoneditor/dist/jsoneditor.min.css';
 //import 'jsoneditor/dist/jsoneditor.min.css';
 //import '!file-loader?name=[name].[ext]&outputPath=img!jsoneditor/dist/img/jsoneditor-icons.svg';
-import getSchema from'./schema.js';
-import * as schema from'./schema.js';
+import * as schemaModule from './schema.js';
+import examples from './examples.js';
 import $ from 'jquery';
+import _ from 'lodash';
 import 'popper.js';
 import 'bootstrap';
 
-function main() {
-    console.log("Running main()");
+function setupEditor() {
     // create the editor
     const container = document.getElementById("jsoneditor")
     const options = {
@@ -38,15 +38,47 @@ function main() {
     const editor = new JSONEditor(container, options)
     editor.expandAll();
 
-    // set json
-    //const examples = require('./examples.json');
+    return editor
+}
+function setExample(editor, schemas, example) {
+    console.log(`Setting example to ${example.name}`);
+    editor.set(example.json);
+    example.schema && setSchema(editor, schemas, example.schema);
+}
 
-    const examples = [require("./examples/em_metadata.json")];
-    editor.set(examples[0]);
+function setupExamples(editor, schemas) {
+    // populate examples dropdown
+    const $list = $("#template-list")
+    examples.forEach( (example, i) => {
+        //const $a = $("<a>").addClass("dropdown-item").attr("href", "#").text(example.name);
+        //$("#template-list").append($a)
+        const $option = $("<option>").attr("value",i).text(example.name)
+        if(i == 0) {
+            $option.prop("selected",true);
+        }
+        $list.append($option);
+    });
+    $list.change(function() {
+        const $sel = $(this).find("option:selected");
+        const val = $sel.val();
+        if(!(0 <= val && val < examples.length)) {
+            return; // "Custom"
+        }
+        const example = examples[$sel.val()];
+        const currScript = editor.get()
+        if(currScript != example.json) {
+            console.log("Loading template "+example.name);
+            setExample(editor, schemas, example);
+        }
+    });
+    // select initial example
+    setExample(editor, schemas, examples[0]);
     editor.expandAll();
 
+    return examples;
+}
 
-
+function setupFileLoader() {
     // Load a JSON document
     FileReaderJS.setupInput(document.getElementById('loadDocument'), {
         readAsDefault: 'Text',
@@ -57,8 +89,11 @@ function main() {
         }
     })
 
+}
+
+function setupDownload() {
     // Save a JSON document
-    document.getElementById('saveDocument').onclick = function () {
+    $('#saveDocument').click(function () {
         // Save Dialog
         let fname = window.prompt("Save as...","metadata.json")
 
@@ -74,25 +109,49 @@ function main() {
         }
         const blob = new Blob([editor.getText()], { type: 'application/json;charset=utf-8' })
         saveAs(blob, fname)
-    }
+    });
+}
 
-    // Load schemas
-    getSchema()
-        .then(s => schema.fixSchema(s))
-        .then(s => editor.setSchema({
-            "$ref": "#/definitions/RawDataset",
-            definitions: s.definitions,
-        }));
+function setSchema(editor, schemas, schemaname) {
+    console.log(`Setting schema to ${schemaname}`);
+    editor.setSchema(schemas[schemaname]);
+    $(`#schema-list option[value='${schemaname}']`).prop("selected", true);
+}
 
+function setupSchemas(editor, schemas) {
+    const $list = $("#schema-list");
+    _.forIn(schemas, (s, name) => {
+        const $option = $("<option>").attr("value", name).text(name);
+        $list.append($option);
+    });
+    $list.change(function() {
+        const $sel = $(this).find("option:selected");
+        const val = $sel.val();
+        setSchema(editor, schemas, schemas[val]);
+    })
+}
+
+function addHooks() {
     // Open accordion folds from anchor links
     $(document).ready(function () {
         location.hash && $(location.hash + '.collapse').collapse('show');
     });
-
-    return editor
 }
 
-window.editor = main();
-window.schemaModule = schema;
-getSchema().then(s => window.schema = schema.fixSchema(s))
-//editor.setSchema({"$ref": "#/definitions/RawDataset", definitions: schema.definitions});
+function main() {
+    const editor = setupEditor();
+    schemaModule.datasetSchemas.then( schemas => {
+        setupSchemas(editor, schemas);
+        setupExamples(editor, schemas);
+    });
+    setupFileLoader();
+    setupDownload();
+    addHooks();
+
+    // expose some variables for debugging
+    window.editor = editor;
+    window.schemaModule = schemaModule;
+    schemaModule.datasetSchemas.then(schemas => window.schemas = schemas);
+    window.examples = examples;
+}
+main();

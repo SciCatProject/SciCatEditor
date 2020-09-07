@@ -18,12 +18,12 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: "SciCat Editor",
-            template: "!!html-loader!src/index.html"
+            template: "./src/index.html"
         }),
         new MiniCssExtractPlugin({
             filename: "[name].css",
         }),
-        new CleanWebpackPlugin(),
+        //new CleanWebpackPlugin(),
 
     ],
     module: {
@@ -58,8 +58,6 @@ module.exports = {
             {
                 test: /\.html$/i,
                 use: [
-                    'file-loader?name=[name].[ext]',
-                    'extract-loader',
                     'html-loader'
                 ],
             }
