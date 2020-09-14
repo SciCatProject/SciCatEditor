@@ -25,16 +25,16 @@
     <div class="row">
       <div class="col-md-6 col-sm-12">
 
-        <div id="accordion" class="mt-2">
+        <div id="accordion" class="mt-2 accordion">
 
           <div class="card">
             <div class="card-header" id="heading-about">
-              <h5 class="mb-0">
+              <h2 class="mb-0">
                 <button class="btn" data-toggle="collapse" data-target="#about" aria-expanded="true"
                   aria-controls="about">
                   About
                 </button>
-              </h5>
+              </h2>
             </div>
 
             <div id="about" class="collapse show" aria-labelledby="heading-about" data-parent="#accordion">
@@ -52,18 +52,41 @@
 
           <div class="card">
             <div class="card-header" id="heading-help">
-              <h5 class="mb-0">
+              <h2 class="mb-0">
                 <button class="btn" data-toggle="collapse" data-target="#help" aria-expanded="true"
                   aria-controls="help">
                   Help
                 </button>
-              </h5>
+              </h2>
             </div>
 
             <div id="help" class="collapse" aria-labelledby="heading-help" data-parent="#accordion">
               <div class="card-body">
 
-                <p><i>TODO</i></p>
+                <h3>Links</h3>
+                <ul>
+                  <li><a href="https://melanie.gitpages.psi.ch/SciCatPages/">SciCat User
+                  Manual</a> - Official documentation about the metadata format and the Data Catalog</li>
+                  <li><a href="https://discovery.psi.ch">PSI Data Catalog</a> - View your datasets</li>
+                </ul>
+
+                <h3>F.A.Q.</h3>
+                <dl class="faq">
+                  <dt>How do I add entries?</dt>
+                  <dd>In
+                    <div class="d-inline jsoneditor-menu float-none mr-1">
+                      <div class="d-inline jsoneditor-modes position-relative float-none">
+                        <button type="button" class="jsoneditor-modes jsoneditor-separator float-none p-0" title="Tree View Icon">Tree ▾</button>
+                      </div>
+                    </div> view, click the '<div class="d-inline jsoneditor-tree float-none"
+                      ><button type="button" class="jsoneditor-button jsoneditor-contextmenu-button align-middle"
+                      title="Actions Menu Icon"></button></div>' and insert
+                      (<div class="d-inline jsoneditor-contextmenu float-none position-relative"
+                      ><button type="button" class="jsoneditor-button jsoneditor-contextmenu-button jsoneditor-insert jsoneditor-icon align-middle position-relative"
+                      style="background-color: inherit" title="Insert Icon"></button></div>) a new key/value pair.
+                  </dd>
+                </dl>
+
                 <a role="button" class="btn btn-primary mx-auto" href="#load" data-toggle="collapse" data-target="#load">Get Started</a>
               </div>
             </div>
@@ -71,12 +94,12 @@
 
           <div class="card">
             <div class="card-header" id="heading-load">
-              <h5 class="mb-0">
+              <h2 class="mb-0">
                 <button class="btn collapsed" data-toggle="collapse" data-target="#load" aria-expanded="false"
                   aria-controls="load">
                   Load
                 </button>
-              </h5>
+              </h2>
             </div>
             <div id="load" class="collapse" aria-labelledby="heading-load" data-parent="#accordion">
               <div class="card-body">
@@ -113,12 +136,12 @@
 
           <div class="card">
             <div class="card-header" id="heading-options">
-              <h5 class="mb-0">
+              <h2 class="mb-0">
                 <button class="btn collapsed" data-toggle="collapse" data-target="#options" aria-expanded="false"
                   aria-controls="options">
                   Options
                 </button>
-              </h5>
+              </h2>
             </div>
             <div id="options" class="collapse" aria-labelledby="heading-options" data-parent="#accordion">
               <div class="card-body">
@@ -139,12 +162,12 @@
 
           <div class="card">
             <div class="card-header" id="heading-export">
-              <h5 class="mb-0">
+              <h2 class="mb-0">
                 <button class="btn collapsed" data-toggle="collapse" data-target="#export" aria-expanded="false"
                   aria-controls="export">
                   Export
                 </button>
-              </h5>
+              </h2>
             </div>
             <div id="export" class="collapse" aria-labelledby="heading-export" data-parent="#accordion">
               <div class="card-body">

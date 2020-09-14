@@ -153,5 +153,6 @@ function main() {
     window.schemaModule = schemaModule;
     schemaModule.datasetSchemas.then(schemas => window.schemas = schemas);
     window.examples = examples;
+    window.$ = $;
 }
 main();

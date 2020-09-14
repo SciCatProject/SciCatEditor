@@ -1,3 +1,6 @@
+@import 'custom_jsoneditor';
+@import 'custom_bootstrap';
+
 #jsoneditor {
     width: 100%;
     height: calc(100vh - 75px);
@@ -7,5 +10,28 @@
     height: 24px;
 }
 
-@import "custom_bootstrap";
-@import "custom_jsoneditor";
+.faq {
+    dt {
+        &::before {
+            content: 'Q. ';
+        }
+    }
+}
+
+body {
+    font-size: 10pt;
+}
+
+h2 .btn {
+    font-size: inherit;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+h3 {
+    font-size: 1.25rem;
+}
+h4 {
+    font-size: 1.1rem;
+}

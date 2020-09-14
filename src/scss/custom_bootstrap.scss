@@ -4,7 +4,8 @@ $theme-colors: (
 );
 //gray: #e5e5e5;
 
-.card-header {
-    padding: 0.25rem 1.25rem;
-}
 @import "~bootstrap/scss/bootstrap";
+
+.accordion .card-header {
+    padding: 0rem 1.25rem;
+}
