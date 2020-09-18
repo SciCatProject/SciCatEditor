@@ -155,6 +155,62 @@
                   </select>
                 </div>
 
+                <!-- <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" for="additional-list">Add Field</label>
+                  </div>
+                  <select multiple class="custom-select" id="additional-list">
+                    <option value="datasetName" data-type="string">Dataset Name</option>
+                    <option value="license" data-type="string" data-default="CC BY-SA 4.0">License</option>
+                    <option value="orcidOfOwner" data-type="string">Owner ORCID</option>
+                    <option value="keywords" data-type="Array[string]">Keywords</option>
+                    <option value="unpublishable" data-type="unpublishable">Unpublishable</option>
+                  </select>
+                </div> -->
+
+                <h3>Add fields:</h3>
+
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <button id="button-datasetname" data-update='{"datasetName":""}'
+                            type="button" class="btn btn-primary input-group-text extra-field">+</button>
+                  </div>
+                  <label class="form-control" for="button-datasetname">Dataset Name</label>
+                </div>
+
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <button id="button-license" data-update='{"license":"CC BY-SA 4.0"}'
+                            type="button" class="btn btn-primary input-group-text extra-field">+</button>
+                  </div>
+                  <label class="form-control" for="button-license">License</label>
+                </div>
+
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <button id="button-orcidOfOwner" data-update='{"orcidOfOwner":""}'
+                            type="button" class="btn btn-primary input-group-text extra-field">+</button>
+                  </div>
+                  <label class="form-control" for="button-orcidOfOwner">Owner ORCID</label>
+                </div>
+
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <button id="button-keywords" data-update='{"keywords":[]}'
+                            type="button" class="btn btn-primary input-group-text extra-field">+</button>
+                  </div>
+                  <label class="form-control" for="button-keywords">Keywords</label>
+                </div>
+
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <button id='button-keywords'
+                            data-update='{"datasetlifecycle":{"publishable":false,"dateOfPublishing":"2099-12-31T00:00:00.000Z","archiveRetentionTime":"2099-12-31T00:00:00.000Z"}}'
+                            type="button" class="btn btn-primary input-group-text extra-field">+</button>
+                  </div>
+                  <label class="form-control" for="button-keywords">Unpublishable</label>
+                </div>
+
                 <a role="button" class="btn btn-primary mx-auto" href="#export" data-toggle="collapse" data-target="#export">Next</a>
               </div>
             </div>

@@ -131,11 +131,36 @@ function setupSchemas(editor, schemas) {
     })
 }
 
-function addHooks() {
+function updateSource(editor, value) {
+    const curr = editor.get();
+    function preferObj(objValue, srcValue) {
+        return objValue === undefined ? srcValue : objValue;
+    }
+    const updated = _.mergeWith(curr, value, preferObj);
+    editor.update(updated);
+
+    if(editor.getMode() == "tree") {
+        //TODO compute full path insead of just pickin the top level
+        const sele = {"path": [Object.keys(value)[0]]};
+        editor.setSelection(sele);
+    }
+    //TODO other modes
+    editor.focus();
+}
+function syncAdditionalField(editor, evt) {
+    const $target = $(evt.target);
+    const valueStr = $target.attr('data-update');
+    const value = JSON.parse(valueStr);
+
+    updateSource(editor, value);
+    console.log(`set ${JSON.stringify(value)}`);
+}
+function addHooks(editor) {
     // Open accordion folds from anchor links
     $(document).ready(function () {
         location.hash && $(location.hash + '.collapse').collapse('show');
     });
+    $("button.extra-field").click(evt => syncAdditionalField(editor, evt));
 }
 
 function main() {
@@ -146,7 +171,7 @@ function main() {
     });
     setupFileLoader();
     setupDownload();
-    addHooks();
+    addHooks(editor);
 
     // expose some variables for debugging
     window.editor = editor;
