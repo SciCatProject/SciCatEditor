@@ -208,7 +208,7 @@
                             data-update='{"datasetlifecycle":{"publishable":false,"dateOfPublishing":"2099-12-31T00:00:00.000Z","archiveRetentionTime":"2099-12-31T00:00:00.000Z"}}'
                             type="button" class="btn btn-primary input-group-text extra-field">+</button>
                   </div>
-                  <label class="form-control" for="button-keywords">Unpublishable</label>
+                  <label class="form-control" for="button-keywords">Do not publish</label>
                 </div>
 
                 <a role="button" class="btn btn-primary mx-auto" href="#export" data-toggle="collapse" data-target="#export">Next</a>
@@ -227,9 +227,12 @@
             </div>
             <div id="export" class="collapse" aria-labelledby="heading-export" data-parent="#accordion">
               <div class="card-body">
-                <div>
-                  <input type="button" id="saveDocument" value="Download JSON" />
+                <div class="mb-1">
+                  <input type="button" id="saveDocument" class="btn btn-primary require-valid" value="Download JSON" />
+                  <input type="button" id="copyDocument" class="btn btn-primary require-valid" value="Copy to Clipboard" />
                 </div>
+
+                <div id="errors"></div>
               </div>
             </div>
 

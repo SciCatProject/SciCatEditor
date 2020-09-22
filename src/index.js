@@ -12,6 +12,42 @@ import _ from 'lodash';
 import 'popper.js';
 import 'bootstrap';
 
+function validationErrorHook(errors) {
+    const $error = $("#errors");
+    $error.empty();
+    if(errors.length > 0) {
+        $(".require-valid").prop("disabled", true);
+        $error.append($("<h4>Errors:</h4>"));
+
+        errors.forEach((error) => {
+            const $child = $("<div>").addClass("error");
+            switch (error.type) {
+            case 'customValidation': // custom validation error
+            case 'validation': // schema validation error
+                $child.addClass("validation-error");
+                if("error" in error) {
+                    var msg = error.error.message;
+                    if(error.error.dataPath){
+                        msg  = error.error.dataPath + ": " + msg;
+                    }
+                    $child.html(msg);
+                } else {
+                    $child.html(error.message);
+                }
+                break;
+            case 'error':  // json parse error
+                $child.addClass("json-error").html(error.message);
+                break;
+            default:
+                $child.html(error.message);
+            }
+            $error.append($child)
+        });
+    } else {
+        $(".require-valid").prop("disabled", false);
+    }
+}
+
 function setupEditor() {
     // create the editor
     const container = document.getElementById("jsoneditor")
@@ -21,6 +57,7 @@ function setupEditor() {
         onError: function (err) {
             alert(err.toString())
         },
+        onValidationError: validationErrorHook,
         templates: [
             {
               text: 'Unit',
@@ -40,6 +77,7 @@ function setupEditor() {
 
     return editor
 }
+
 function setExample(editor, schemas, example) {
     console.log(`Setting example to ${example.name}`);
     editor.set(example.json);
@@ -155,6 +193,7 @@ function syncAdditionalField(editor, evt) {
     updateSource(editor, value);
     console.log(`set ${JSON.stringify(value)}`);
 }
+
 function addHooks(editor) {
     // Open accordion folds from anchor links
     $(document).ready(function () {
