@@ -9,9 +9,10 @@ module.exports = {
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
+        assetModuleFilename: 'images/[name][ext]'
     },
     devServer: {
-        contentBase: path.join(__dirname, 'dist'),
+        static: path.join(__dirname, 'dist'),
         compress: true,
         port: 8080,
     },
@@ -49,11 +50,12 @@ module.exports = {
             },
             {
                 test: /\.(png|svg|jpg|gif)$/i,
-                loader: 'file-loader',
-                options: {
-                    name: '[name].[ext]',
-                    outputPath: 'images',
-                },
+                type: 'asset/resource',
+                // loader: 'file-loader',
+                // options: {
+                //     name: '[name].[ext]',
+                //     outputPath: 'images',
+                // },
             },
             {
                 test: /\.html$/i,
