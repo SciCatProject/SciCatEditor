@@ -128,6 +128,10 @@ function setupFileLoader(editor) {
 
 }
 
+function getText(editor) {
+    return JSON.stringify(editor.get(), null, 2);
+}
+
 function setupDownload(editor) {
     // Save a JSON document
     $('#saveDocument').on("click", (function () {
@@ -144,15 +148,14 @@ function setupDownload(editor) {
                 fname = fname.split('.')[0] + ".json"
             }
         }
-        const blob = new Blob([editor.getText()], { type: 'application/json;charset=utf-8' })
+        const blob = new Blob([getText(editor)], { type: 'application/json;charset=utf-8' })
         saveAs(blob, fname)
     }));
 }
 
 function setupCopy(editor) {
     $('#copyDocument').on("click", (function () {
-        const code = editor.getText();
-        navigator.clipboard.writeText(code);
+        navigator.clipboard.writeText(getText(editor));
     }));
 }
 
