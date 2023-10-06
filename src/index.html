@@ -27,41 +27,37 @@
 
         <div id="accordion" class="mt-2 accordion">
 
-          <div class="card">
-            <div class="card-header" id="heading-about">
-              <h2 class="mb-0">
-                <button class="btn" data-toggle="collapse" data-target="#about" aria-expanded="true"
-                  aria-controls="about">
-                  About
-                </button>
-              </h2>
-            </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-about">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#about" aria-expanded="true"
+                aria-controls="about">
+                About
+              </button>
+            </h2>
 
-            <div id="about" class="collapse show" aria-labelledby="heading-about" data-parent="#accordion">
-              <div class="card-body">
+            <div id="about" class="accordion-collapse collapse show" aria-labelledby="heading-about" data-bs-parent="#accordion">
+              <div class="accordion-body">
 
                 <p>This is an editor for metadata files for the
                   <a href="https://discovery.psi.ch">PSI Data Catalog</a>.
                   Choose templates and options below, or edit the metadata directly
                   to the right.
                 </p>
-                <a role="button" class="btn btn-primary mx-auto" href="#load" data-toggle="collapse" data-target="#load">Get Started</a>
+                <a role="button" class="btn btn-primary mx-auto" href="#load" data-bs-toggle="collapse" data-bs-target="#load">Get Started</a>
               </div>
             </div>
           </div>
 
-          <div class="card">
-            <div class="card-header" id="heading-help">
-              <h2 class="mb-0">
-                <button class="btn" data-toggle="collapse" data-target="#help" aria-expanded="true"
-                  aria-controls="help">
-                  Help
-                </button>
-              </h2>
-            </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-help">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#help" aria-expanded="true"
+                aria-controls="help">
+                Help
+              </button>
+            </h2>
 
-            <div id="help" class="collapse" aria-labelledby="heading-help" data-parent="#accordion">
-              <div class="card-body">
+            <div id="help" class="collapse" aria-labelledby="heading-help" data-bs-parent="#accordion">
+              <div class="accordion-body">
 
                 <h3>Links</h3>
                 <ul>
@@ -87,22 +83,20 @@
                   </dd>
                 </dl>
 
-                <a role="button" class="btn btn-primary mx-auto" href="#load" data-toggle="collapse" data-target="#load">Get Started</a>
+                <a role="button" class="btn btn-primary mx-auto" href="#load" data-bs-toggle="collapse" data-bs-target="#load">Get Started</a>
               </div>
             </div>
           </div>
 
-          <div class="card">
-            <div class="card-header" id="heading-load">
-              <h2 class="mb-0">
-                <button class="btn collapsed" data-toggle="collapse" data-target="#load" aria-expanded="false"
-                  aria-controls="load">
-                  Load
-                </button>
-              </h2>
-            </div>
-            <div id="load" class="collapse" aria-labelledby="heading-load" data-parent="#accordion">
-              <div class="card-body">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-load">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#load" aria-expanded="false"
+                aria-controls="load">
+                Load
+              </button>
+            </h2>
+            <div id="load" class="collapse" aria-labelledby="heading-load" data-bs-parent="#accordion">
+              <div class="accordion-body">
                 <div>
                   <p>Load from a template or file. Caution, this will override any
                   customizations!</p>
@@ -129,22 +123,20 @@
 
                 </div>
 
-                <a role="button" class="btn btn-primary mx-auto" href="#options" data-toggle="collapse" data-target="#options">Next</a>
+                <a role="button" class="btn btn-primary mx-auto" href="#options" data-bs-toggle="collapse" data-bs-target="#options">Next</a>
               </div>
             </div>
           </div>
 
-          <div class="card">
-            <div class="card-header" id="heading-options">
-              <h2 class="mb-0">
-                <button class="btn collapsed" data-toggle="collapse" data-target="#options" aria-expanded="false"
-                  aria-controls="options">
-                  Options
-                </button>
-              </h2>
-            </div>
-            <div id="options" class="collapse" aria-labelledby="heading-options" data-parent="#accordion">
-              <div class="card-body">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-options">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#options" aria-expanded="false"
+                aria-controls="options">
+                Options
+              </button>
+            </h2>
+            <div id="options" class="collapse" aria-labelledby="heading-options" data-bs-parent="#accordion">
+              <div class="accordion-body">
 
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
@@ -204,29 +196,27 @@
 
                 <div class="input-group mb-2">
                   <div class="input-group-prepend">
-                    <button id='button-keywords'
+                    <button id="button-nopublish"
                             data-update='{"datasetlifecycle":{"publishable":false,"dateOfPublishing":"2099-12-31T00:00:00.000Z","archiveRetentionTime":"2099-12-31T00:00:00.000Z"}}'
                             type="button" class="btn btn-primary input-group-text extra-field">+</button>
                   </div>
-                  <label class="form-control" for="button-keywords">Do not publish</label>
+                  <label class="form-control" for="button-nopublish">Do not publish</label>
                 </div>
 
-                <a role="button" class="btn btn-primary mx-auto" href="#export" data-toggle="collapse" data-target="#export">Next</a>
+                <a role="button" class="btn btn-primary mx-auto" href="#export" data-bs-toggle="collapse" data-bs-target="#export">Next</a>
               </div>
             </div>
           </div>
 
-          <div class="card">
-            <div class="card-header" id="heading-export">
-              <h2 class="mb-0">
-                <button class="btn collapsed" data-toggle="collapse" data-target="#export" aria-expanded="false"
-                  aria-controls="export">
-                  Export
-                </button>
-              </h2>
-            </div>
-            <div id="export" class="collapse" aria-labelledby="heading-export" data-parent="#accordion">
-              <div class="card-body">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-export">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#export" aria-expanded="false"
+                aria-controls="export">
+                Export
+              </button>
+            </h2>
+            <div id="export" class="collapse" aria-labelledby="heading-export" data-bs-parent="#accordion">
+              <div class="accordion-body">
                 <div class="mb-1">
                   <input type="button" id="saveDocument" class="btn btn-primary require-valid" value="Download JSON" />
                   <input type="button" id="copyDocument" class="btn btn-primary require-valid" value="Copy to Clipboard" />

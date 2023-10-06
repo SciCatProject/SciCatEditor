@@ -1,27 +1,39 @@
 version: '2'
 services:
   builder:
+    # builds dist/
     build:
       context: .
       dockerfile: Dockerfile
     entrypoint: ["npm", "run", "build"]
     image: scicateditor:latest
+    ports: []
     volumes:
       - "./src:/app/src:ro"
       - "./dist:/app/dist:rw"
 
   # For dev you probably want to install npm locally and run `npm run serve`
-  #devserver:
-  #  build:
-  #    context: .
-  #    dockerfile: Dockerfile
-  #  image: scicateditor/latest
-  #  ports:
-  #    - "8080:8080"
-  #  volumes:
-  #    - "./src:/app/src"
+  devserver:
+    # runs webpack-dev-server
+    profiles: ["dev"]
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: scicateditor/latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - "./src:/app/src"
+      - "./dist:/app/dist"
+      - "./package.json:/app/package.json"
+      - "./package-lock.json:/app/package-lock.json"
+      - "./postcss.config.js:/app/postcss.config.js"
+      - "./webpack.config.js:/app/webpack.config.js"
+
+
 
   server:
+    # serves dist/
     image: nginx:latest
     ports:
         - "8080:80"

@@ -9,7 +9,6 @@ import * as schemaModule from './schema.js';
 import examples from './examples.js';
 import $ from 'jquery';
 import _ from 'lodash';
-import 'popper.js';
 import 'bootstrap';
 
 function validationErrorHook(errors) {
