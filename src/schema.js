@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { traverse } from './util.js';
 
 

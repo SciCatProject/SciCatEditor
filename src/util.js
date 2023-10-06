@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 /** For every node in an object tree, call iteratee with (node, keyPath, root).
  * Nodes are traversed in pre-order.
  *

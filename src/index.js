@@ -9,7 +9,6 @@ import * as schemaModule from './schema.js';
 import examples from './examples.js';
 import $ from 'jquery';
 import _ from 'lodash';
-import 'popper.js';
 import 'bootstrap';
 
 function validationErrorHook(errors) {
@@ -116,7 +115,7 @@ function setupExamples(editor, schemas) {
     return examples;
 }
 
-function setupFileLoader() {
+function setupFileLoader(editor) {
     // Load a JSON document
     FileReaderJS.setupInput(document.getElementById('loadDocument'), {
         readAsDefault: 'Text',
@@ -129,9 +128,13 @@ function setupFileLoader() {
 
 }
 
-function setupDownload() {
+function getText(editor) {
+    return JSON.stringify(editor.get(), null, 2);
+}
+
+function setupDownload(editor) {
     // Save a JSON document
-    $('#saveDocument').click(function () {
+    $('#saveDocument').on("click", (function () {
         // Save Dialog
         let fname = window.prompt("Save as...","metadata.json")
 
@@ -145,9 +148,15 @@ function setupDownload() {
                 fname = fname.split('.')[0] + ".json"
             }
         }
-        const blob = new Blob([editor.getText()], { type: 'application/json;charset=utf-8' })
+        const blob = new Blob([getText(editor)], { type: 'application/json;charset=utf-8' })
         saveAs(blob, fname)
-    });
+    }));
+}
+
+function setupCopy(editor) {
+    $('#copyDocument').on("click", (function () {
+        navigator.clipboard.writeText(getText(editor));
+    }));
 }
 
 function setSchema(editor, schemas, schemaname) {
@@ -196,10 +205,10 @@ function syncAdditionalField(editor, evt) {
 
 function addHooks(editor) {
     // Open accordion folds from anchor links
-    $(document).ready(function () {
+    $(document).on("ready",function() {
         location.hash && $(location.hash + '.collapse').collapse('show');
     });
-    $("button.extra-field").click(evt => syncAdditionalField(editor, evt));
+    $("button.extra-field").on("click", (evt => syncAdditionalField(editor, evt)));
 }
 
 function main() {
@@ -209,7 +218,8 @@ function main() {
         setupExamples(editor, schemas);
     });
     setupFileLoader();
-    setupDownload();
+    setupDownload(editor);
+    setupCopy(editor);
     addHooks(editor);
 
     // expose some variables for debugging

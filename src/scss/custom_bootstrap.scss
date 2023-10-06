@@ -4,6 +4,12 @@ $theme-colors: (
 );
 //gray: #e5e5e5;
 
+// I prefer white text on the primary background. This requires lowering the contrast.
+// black: 6.39051927, white: 3.28611794
+// Should be restored to 4.5 if the theme changes.
+// https://getbootstrap.com/docs/5.3/customize/sass/#color-contrast
+$min-contrast-ratio: 3;
+
 @import "~bootstrap/scss/bootstrap";
 
 .accordion .card-header {
