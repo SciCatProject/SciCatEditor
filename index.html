@@ -1,0 +1,241 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <!-- when using the mode "code", it's important to specify charset utf-8 -->
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>SciCat Editor</title>
+
+  <script src="https://bgrins.github.io/filereader.js/filereader.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js"></script>
+
+<script defer src="bundle.js"></script><link href="main.css" rel="stylesheet"></head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <img class="m-2" src="images/scicat-logo-white.png" />
+    <img class="m-2" src="images/psilogo.png" />
+    <a href="#" class="navbar-brand">SciCat Metadata Editor</a>
+  </nav>
+
+  <div id="contentpane" class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+
+        <div id="accordion" class="mt-2 accordion">
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-about">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#about" aria-expanded="true"
+                aria-controls="about">
+                About
+              </button>
+            </h2>
+
+            <div id="about" class="accordion-collapse collapse show" aria-labelledby="heading-about" data-bs-parent="#accordion">
+              <div class="accordion-body">
+
+                <p>This is an editor for metadata files for the
+                  <a href="https://discovery.psi.ch">PSI Data Catalog</a>.
+                  Choose templates and options below, or edit the metadata directly
+                  to the right.
+                </p>
+                <a role="button" class="btn btn-primary mx-auto" href="#load" data-bs-toggle="collapse" data-bs-target="#load">Get Started</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-help">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#help" aria-expanded="true"
+                aria-controls="help">
+                Help
+              </button>
+            </h2>
+
+            <div id="help" class="collapse" aria-labelledby="heading-help" data-bs-parent="#accordion">
+              <div class="accordion-body">
+
+                <h3>Links</h3>
+                <ul>
+                  <li><a href="https://scicatproject.github.io/documentation/Ingestor/ingestManual.html">SciCat User
+                  Manual</a> - Official documentation about the metadata format and the Data Catalog</li>
+                  <li><a href="https://discovery.psi.ch">PSI Data Catalog</a> - View your datasets</li>
+                </ul>
+
+                <h3>F.A.Q.</h3>
+                <dl class="faq">
+                  <dt>How do I add entries?</dt>
+                  <dd>In
+                    <div class="d-inline jsoneditor-menu float-none mr-1">
+                      <div class="d-inline jsoneditor-modes position-relative float-none">
+                        <button type="button" class="jsoneditor-modes jsoneditor-separator float-none p-0" title="Tree View Icon">Tree ▾</button>
+                      </div>
+                    </div> view, click the '<div class="d-inline jsoneditor-tree float-none"
+                      ><button type="button" class="jsoneditor-button jsoneditor-contextmenu-button align-middle"
+                      title="Actions Menu Icon"></button></div>' and insert
+                      (<div class="d-inline jsoneditor-contextmenu float-none position-relative"
+                      ><button type="button" class="jsoneditor-button jsoneditor-contextmenu-button jsoneditor-insert jsoneditor-icon align-middle position-relative"
+                      style="background-color: inherit" title="Insert Icon"></button></div>) a new key/value pair.
+                  </dd>
+                </dl>
+
+                <a role="button" class="btn btn-primary mx-auto" href="#load" data-bs-toggle="collapse" data-bs-target="#load">Get Started</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-load">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#load" aria-expanded="false"
+                aria-controls="load">
+                Load
+              </button>
+            </h2>
+            <div id="load" class="collapse" aria-labelledby="heading-load" data-bs-parent="#accordion">
+              <div class="accordion-body">
+                <div>
+                  <p>Load from a template or file. Caution, this will override any
+                  customizations!</p>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="template-list">Load Template</label>
+                    </div>
+                    <select class="custom-select" id="template-list">
+                      <option value="custom">Custom</option>
+                    </select>
+                  </div>
+
+                  <p class="small">or</p>
+
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Upload file</span>
+                    </div>
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="loadDocument">
+                      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                    </div>
+                  </div>
+
+                </div>
+
+                <a role="button" class="btn btn-primary mx-auto" href="#options" data-bs-toggle="collapse" data-bs-target="#options">Next</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-options">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#options" aria-expanded="false"
+                aria-controls="options">
+                Options
+              </button>
+            </h2>
+            <div id="options" class="collapse" aria-labelledby="heading-options" data-bs-parent="#accordion">
+              <div class="accordion-body">
+
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" for="schema-list">Validation Schema</label>
+                  </div>
+                  <select class="custom-select" id="schema-list">
+                    <option value="none">None</option>
+                  </select>
+                </div>
+
+                <!-- <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" for="additional-list">Add Field</label>
+                  </div>
+                  <select multiple class="custom-select" id="additional-list">
+                    <option value="datasetName" data-type="string">Dataset Name</option>
+                    <option value="license" data-type="string" data-default="CC BY-SA 4.0">License</option>
+                    <option value="orcidOfOwner" data-type="string">Owner ORCID</option>
+                    <option value="keywords" data-type="Array[string]">Keywords</option>
+                    <option value="unpublishable" data-type="unpublishable">Unpublishable</option>
+                  </select>
+                </div> -->
+
+                <h3>Add fields:</h3>
+
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <button id="button-datasetname" data-update='{"datasetName":""}'
+                            type="button" class="btn btn-primary input-group-text extra-field">+</button>
+                  </div>
+                  <label class="form-control" for="button-datasetname">Dataset Name</label>
+                </div>
+
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <button id="button-license" data-update='{"license":"CC BY-SA 4.0"}'
+                            type="button" class="btn btn-primary input-group-text extra-field">+</button>
+                  </div>
+                  <label class="form-control" for="button-license">License</label>
+                </div>
+
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <button id="button-orcidOfOwner" data-update='{"orcidOfOwner":""}'
+                            type="button" class="btn btn-primary input-group-text extra-field">+</button>
+                  </div>
+                  <label class="form-control" for="button-orcidOfOwner">Owner ORCID</label>
+                </div>
+
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <button id="button-keywords" data-update='{"keywords":[]}'
+                            type="button" class="btn btn-primary input-group-text extra-field">+</button>
+                  </div>
+                  <label class="form-control" for="button-keywords">Keywords</label>
+                </div>
+
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <button id="button-nopublish"
+                            data-update='{"datasetlifecycle":{"publishable":false,"dateOfPublishing":"2099-12-31T00:00:00.000Z","archiveRetentionTime":"2099-12-31T00:00:00.000Z"}}'
+                            type="button" class="btn btn-primary input-group-text extra-field">+</button>
+                  </div>
+                  <label class="form-control" for="button-nopublish">Do not publish</label>
+                </div>
+
+                <a role="button" class="btn btn-primary mx-auto" href="#export" data-bs-toggle="collapse" data-bs-target="#export">Next</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-export">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#export" aria-expanded="false"
+                aria-controls="export">
+                Export
+              </button>
+            </h2>
+            <div id="export" class="collapse" aria-labelledby="heading-export" data-bs-parent="#accordion">
+              <div class="accordion-body">
+                <div class="mb-1">
+                  <input type="button" id="saveDocument" class="btn btn-primary require-valid" value="Download JSON" />
+                  <input type="button" id="copyDocument" class="btn btn-primary require-valid" value="Copy to Clipboard" />
+                </div>
+
+                <div id="errors"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-sm-12">
+        <div id="jsoneditor" class="mt-2 sticky-top"></div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
