@@ -10,6 +10,7 @@ import examples from './examples.js';
 import $ from 'jquery';
 import _ from 'lodash';
 import 'bootstrap';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 function validationErrorHook(errors) {
     const $error = $("#errors");
