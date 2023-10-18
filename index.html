@@ -17,7 +17,6 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <img class="m-2" src="images/scicat-logo-white.png" />
-    <img class="m-2" src="images/psilogo.png" />
     <a href="#" class="navbar-brand">SciCat Metadata Editor</a>
   </nav>
 
@@ -38,12 +37,18 @@
             <div id="about" class="accordion-collapse collapse show" aria-labelledby="heading-about" data-bs-parent="#accordion">
               <div class="accordion-body">
 
-                <p>This is an editor for metadata files for the
-                  <a href="https://discovery.psi.ch">PSI Data Catalog</a>.
+                <p>This is an editor for metadata.json files for the
+                  <a href="https://scicatproject.github.io/">SciCat</a> data catalog.
                   Choose templates and options below, or edit the metadata directly
                   to the right.
                 </p>
-                <a role="button" class="btn btn-primary mx-auto" href="#load" data-bs-toggle="collapse" data-bs-target="#load">Get Started</a>
+                <p>Some institutes may have additional requirements and conventions for
+                some fields. Requests for additional templates can be made on <a
+                href="https://github.com/SciCatProject/SciCatEditor">github</a>.</p> 
+                <a role="button" class="btn btn-primary mx-auto" href="#load" data-bs-toggle="collapse" data-bs-target="#load">
+                  Choose a template
+                  <i class="bi bi-caret-down-fill"></i>
+                </a>
               </div>
             </div>
           </div>
@@ -61,6 +66,7 @@
 
                 <h3>Links</h3>
                 <ul>
+                  <li><a href="https://scicatproject.github.io/">SciCat Home</a></li>
                   <li><a href="https://scicatproject.github.io/documentation/Ingestor/ingestManual.html">SciCat User
                   Manual</a> - Official documentation about the metadata format and the Data Catalog</li>
                   <li><a href="https://discovery.psi.ch">PSI Data Catalog</a> - View your datasets</li>
@@ -75,15 +81,18 @@
                         <button type="button" class="jsoneditor-modes jsoneditor-separator float-none p-0" title="Tree View Icon">Tree ▾</button>
                       </div>
                     </div> view, click the '<div class="d-inline jsoneditor-tree float-none"
-                      ><button type="button" class="jsoneditor-button jsoneditor-contextmenu-button align-middle"
+                      ><button type="button" class="d-inline jsoneditor-button jsoneditor-contextmenu-button align-middle"
                       title="Actions Menu Icon"></button></div>' and insert
                       (<div class="d-inline jsoneditor-contextmenu float-none position-relative"
-                      ><button type="button" class="jsoneditor-button jsoneditor-contextmenu-button jsoneditor-insert jsoneditor-icon align-middle position-relative"
+                      ><button type="button" class="jsoneditor-button jsoneditor-contextmenu-button jsoneditor-insert jsoneditor-icon align-middle position-relative d-inline"
                       style="background-color: inherit" title="Insert Icon"></button></div>) a new key/value pair.
                   </dd>
                 </dl>
 
-                <a role="button" class="btn btn-primary mx-auto" href="#load" data-bs-toggle="collapse" data-bs-target="#load">Get Started</a>
+                <a role="button" class="btn btn-primary mx-auto" href="#load" data-bs-toggle="collapse" data-bs-target="#load">
+                  Choose a template
+                  <i class="bi bi-caret-down-fill"></i>
+                </a>
               </div>
             </div>
           </div>
@@ -123,7 +132,10 @@
 
                 </div>
 
-                <a role="button" class="btn btn-primary mx-auto" href="#options" data-bs-toggle="collapse" data-bs-target="#options">Next</a>
+                <a role="button" class="btn btn-primary mx-auto" href="#options" data-bs-toggle="collapse" data-bs-target="#options">
+                  Next
+                  <i class="bi bi-caret-down-fill"></i>
+                </a>
               </div>
             </div>
           </div>
@@ -203,7 +215,10 @@
                   <label class="form-control" for="button-nopublish">Do not publish</label>
                 </div>
 
-                <a role="button" class="btn btn-primary mx-auto" href="#export" data-bs-toggle="collapse" data-bs-target="#export">Next</a>
+                <a role="button" class="btn btn-primary mx-auto" href="#export" data-bs-toggle="collapse" data-bs-target="#export">
+                  Next
+                  <i class="bi bi-caret-down-fill"></i>
+                </a>
               </div>
             </div>
           </div>
