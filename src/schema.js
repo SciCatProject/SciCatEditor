@@ -5,7 +5,7 @@ import { traverse } from './util.js';
  * Downloads the full API schema
  */
 export async function fetchSwaggerSchema() {
-    const swagger_url = "https://scicatproject.github.io/api-documentation/swagger.json";
+    const swagger_url = "https://www.scicatproject.org/api-documentation/swagger.json";
     return fetch(swagger_url)
         .then(response => response.json())
 }
