@@ -1,4 +1,5 @@
-$jse-blue: #0099c8;
-$jse-icons: "~jsoneditor/src/scss/img/jsoneditor-icons.svg";
-
-@import "~jsoneditor/src/scss/jsoneditor";
+@use "~jsoneditor/src/scss/jsoneditor/variables" with (
+    $jse-blue: #ff99c8,
+    $jse-icons: "~jsoneditor/src/scss/img/jsoneditor-icons.svg"
+);
+@use "~jsoneditor/src/scss/jsoneditor";
