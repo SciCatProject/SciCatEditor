@@ -27,7 +27,7 @@
     "exports-loader": "^5.0.0",
     "html-loader": "^5.1.0",
     "html-webpack-plugin": "^5.6.3",
-    "mini-css-extract-plugin": "^2.2.2",
+    "mini-css-extract-plugin": "^2.9.2",
     "postcss-loader": "^8.1.1",
     "resolve-url-loader": "^5.0.0",
     "run": "^1.5.0",
