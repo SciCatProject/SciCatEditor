@@ -14,7 +14,7 @@
   "author": "Spencer Bliven <spencer.bliven@psi.ch>",
   "license": "GPL-3.0",
   "dependencies": {
-    "bootstrap": "^5.3.5",
+    "bootstrap": "^5.3.6",
     "bootstrap-icons": "^1.11.3",
     "jquery": "^3.7.1",
     "jsoneditor": "^10.2.0",
